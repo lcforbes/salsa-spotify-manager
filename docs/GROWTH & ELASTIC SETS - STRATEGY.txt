@@ -1,0 +1,85 @@
+SALSA MASTER GROWTH & ELASTIC SET STRATEGY
+==========================================
+
+CORE PRINCIPLE
+--------------
+492 tracks is the V2.0 baseline, NOT a permanent ceiling.
+
+The canonical source is now:
+  salsa_social_master.csv
+
+The master may grow whenever worthwhile Incoming tracks are curator-approved.
+There is no automatic one-in/one-out rule. Existing tracks leave only for a
+musical/curatorial reason (weak fit, duplicate, overplayed/rested, etc.).
+
+WHO DECIDES?
+------------
+The curator decides Promote / Reserve / Reject. The code prepares data, detects
+duplicates and structural issues, and can carry out approved placements. It does
+not autonomously promote songs.
+
+INCOMING WORKFLOW
+-----------------
+1. Add discoveries to Spotify Incoming.
+2. Export Incoming through Chosic (or another CSV with Spotify track IDs/URIs).
+3. Run: 13 - Prepare Incoming Review CSV.
+4. In the generated review file, mark each candidate Promote / Reserve / Reject.
+5. For Promote rows, fill Insert After Master Position. Preferably also fill
+   Suggested Set, Suggested Floor Role and Suggested Style.
+6. Run: 14 - Apply Approved Incoming Decisions to Master CSV.
+7. Run Validate, then Preview, then Preserve Sync.
+
+ELASTIC SETS
+------------
+25 tracks remains the design target for an internal social-dance set. It is no
+longer a hard container size. During normal growth:
+  25     = Balanced
+  23–27  = Elastic OK
+  <23/>27 = Review
+
+A new promoted track should be inserted where it improves musical flow, even if
+that temporarily makes a set 26 or 27 tracks. Do not cascade hundreds of tracks
+through later sets just to maintain exact arithmetic.
+
+REBASELINE POINTS
+-----------------
+Periodically, when the active rotation reaches a clean multiple of 25, consider a
+full musical rebalance. Example:
+  475 active = 19 × 25
+  485 active = keep 19 elastic sets
+  500 active = natural opportunity for 20 × 25
+  525 active = natural opportunity for 21 × 25
+
+The manager reports these opportunities but does NOT automatically rebalance the
+sets. Musical programming takes priority over mathematical symmetry.
+
+RESERVE
+-------
+Reserve / Specialist may grow independently and remains part of the master file
+at the end of Custom order unless you deliberately restructure it.
+
+SPOTIFY
+-------
+Spotify remains the published playback copy. The CSV is the source of truth.
+After local Incoming decisions:
+  Validate -> Preview -> Preserve Sync
+updates the same permanent public playlist ID/share link.
+CURATING TRACKS OUT
+-------------------
+Existing tracks should normally be removed or rested through command 16 rather than
+manual CSV editing. Remove deletes the track from the canonical target; Rest keeps it
+in the master but moves it to Reserve / Specialist. Both are local, backed-up actions
+and are published only after the normal Validate → Preview → Preserve Sync workflow.
+
+INCOMING POLICY — AUTOMATIC PROMOTION
+-------------------------------------
+Presence in the Incoming export now constitutes approval to enter the master.
+There is no Reject category in the Incoming workflow.
+
+The code automatically assigns Style, Floor Role, Set and insertion point using the
+existing V2 master as the programming reference. Elastic sets remain 23–27 where
+practical; additions are spread to avoid local bloat. Exact 25-track symmetry is
+restored only during a deliberate periodic rebaseline.
+
+The two local commands are Plan -> Apply. The Plan is fully populated automatically;
+the user does not edit decisions or placement fields.

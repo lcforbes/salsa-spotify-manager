@@ -1,0 +1,27 @@
+SALSA SPOTIFY MANAGER — UI UPGRADE
+==================================
+
+FOR YOUR EXISTING SALSA MANAGER FOLDER
+--------------------------------------
+1. Close any currently running Salsa Manager window/console.
+2. Extract this ZIP directly into your EXISTING salsa_spotify_importer_windows folder.
+3. Allow these UI/launcher files to be added/replaced.
+4. Double-click:
+
+       Run Salsa Manager.bat
+
+The upgrade ZIP deliberately does NOT contain or replace:
+  • salsa_social_master.csv
+  • salsa_master_config.json
+  • salsa_master_state_cache.json
+  • spotify_quota_status.json
+  • spotify_client_id.txt
+  • backups, master history, Incoming plans, or your existing logs
+
+Your current playlist data and saved Spotify master identity therefore remain intact.
+
+The old console interface is still available through:
+
+       Run Salsa Manager - Command Line.bat
+
+and all of your existing numbered BAT commands remain usable.

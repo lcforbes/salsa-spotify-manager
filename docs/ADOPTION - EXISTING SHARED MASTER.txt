@@ -1,0 +1,34 @@
+ADOPTING THE EXISTING SHARED PLAYLIST
+=====================================
+
+Use this when the playlist already has a public Spotify link in circulation.
+
+WHAT ADOPTION DOES
+------------------
+• Reads the existing playlist once.
+• Records its playlist ID and public URL.
+• Creates an immediate CSV backup of its present Custom order + live Added At values.
+• Compares it with the current salsa_social_master.csv, whatever its track count.
+• Shows additions, removals and reorder requirements.
+• Does NOT alter playlist contents.
+
+WHAT HAPPENS WHEN YOU APPLY
+---------------------------
+The normal Preserve Sync command:
+• backs up again;
+• retains existing occurrences where possible;
+• removes only tracks no longer present in the canonical master;
+• adds genuinely new approved tracks;
+• reorders the SAME playlist into exact canonical Custom order;
+• keeps the same playlist ID/public share link.
+
+ORGANIC GROWTH
+--------------
+The canonical master is not required to remain at 492 tracks. If Incoming promotions
+grow it to 502, 540, etc., Preview/Sync simply treat that new CSV length as the target.
+
+RECOMMENDED LAUNCHERS
+---------------------
+2 - Adopt Existing Shared Playlist as Master.bat
+3 - Preview from Cache - Zero API Calls.bat
+4 - Apply Preserve Sync In Place - Quota Efficient.bat

@@ -1,0 +1,98 @@
+2026-08-31 — Automatic Incoming programming
+--------------------------------------------
+• Removed Reject from the Incoming model: inclusion in Incoming means Promote.
+• Removed per-track curator decisions from Incoming.
+• Added automatic Style classification using master artist history and Chosic metadata.
+• Added automatic Floor Role classification from empirical V2 audio-feature profiles.
+• Added automatic elastic Set selection and local insertion-point optimisation.
+• Persist automatic Intensity V2 and Social Fit V2 estimates for promoted tracks.
+• Incoming Plan is now a fully populated report; Apply replays it without manual edits.
+• Structural Settle / Release / Closer anchors remain stable during organic growth.
+• Already-present and duplicate Incoming rows are skipped automatically.
+• Missing Spotify URI/ID aborts planning rather than silently dropping a track.
+
+2026-08-31 — Remove / Rest Tracks workflow
+------------------------------------------
+• Added command 16: Remove / Rest Tracks from Master — no Spotify calls.
+• Interactive search by position, title, artist, Spotify URI or ISRC.
+• Supports multiple queued actions with final APPLY confirmation.
+• Remove deletes the selected occurrence from the canonical master.
+• Rest moves an active track to Reserve / Specialist at the end.
+• Automatically backs up the master, renumbers positions/slots and reports elastic-set health.
+
+2026-08-31 — Organic growth / elastic sets revision
+---------------------------------------------------
+• Removed fixed 492-track validation ceiling; 492 is now the V2.0 baseline only.
+• Renamed canonical source to salsa_social_master.csv.
+• Added elastic-set analysis: 25 target, 23–27 acceptable during routine growth.
+• Added natural rebaseline recommendations at clean multiples of 25 active tracks.
+• Added Prepare Incoming Review workflow; curator remains final promotion authority.
+• Added Apply Approved Incoming Decisions workflow; grows local master without Spotify calls.
+• Added local master-history backups before applying Incoming promotions.
+• Updated all preview/sync messaging and fast-rebuild estimates for variable track counts.
+• Retained permanent public playlist, Preserve Sync, quota cache/checkpoints and logging.
+
+2026-08-30 — Automatic timestamped logs
+---------------------------------------
+• Every main manager run now creates a timestamped text log in logs\.
+• Console output remains visible live and interactive prompts still work.
+• Both stdout and stderr/tracebacks are captured.
+• Generic Date-Order Clone gets the same logging in its own logs\ folder.
+
+2026-08-29 — Automatic QUOTA_EXCEEDED unlock detection
+------------------------------------------------------
+• Reads Retry-After and Spotify Date directly from QUOTA_EXCEEDED 429 responses.
+• Calculates exact UK GMT/BST unlock time and a +5 second safe retry time.
+• Saves reset information to spotify_quota_status.json.
+• Later manager runs stop locally before OAuth/Web API work while the saved lock is active.
+• Added zero-call Show Saved Quota Unlock Status command/launcher.
+• Does not require Python tzdata/zoneinfo on Windows.
+• Self-test includes the observed 57,398-second Spotify quota response.
+
+2026-08-28 — Quota-efficient manager
+---------------------------------------
+• Added snapshot_id-backed local state cache.
+• Adoption reuses one live fetch for config, backup and preview.
+• Preview can run completely offline from cache.
+• Sync verifies cache with one metadata request and only refreshes all items if snapshot changed.
+• Removed redundant pre-backup and final-verification full playlist reads.
+• Added batch additions (up to 100 items/request).
+• Added contiguous-block reorder optimisation.
+• Added mutation checkpoint after every successful write for quota-interrupted resume.
+• Added explicit FAST in-place rebuild (~5 mutation calls for 492 tracks), with strong Added At warning.
+• Added per-command Web API request count reporting.
+
+2026-08-28 — Adoption prompt / launcher reliability fix
+------------------------------------------------------
+• Adoption now asks for the existing playlist URL before Spotify browser authorization.
+• The adoption .bat passes the playlist explicitly to the manager.
+• Removed stderr suppression from Windows launchers.
+• Replaced `py ... || python ...` with explicit interpreter detection, preventing
+  genuine script errors from being mistaken for a missing Python launcher.
+
+2026-08-27 — Existing shared master revision
+---------------------------------------------
+• Made adoption of an existing publicly shared playlist the recommended initial path.
+• Added explicit Adopt Existing Shared Playlist workflow.
+• Adoption saves playlist ID/share URL, creates a baseline backup and previews V2 conversion.
+• Initial V2 conversion now uses the same Preview/Sync engine as routine maintenance.
+• Added post-sync share-link and exact Custom-order verification messaging.
+• New-playlist creation moved to fallback-only status.
+• Renumbered batch launchers around the recommended path.
+• Updated README, state-of-play and adoption guide.
+
+CHANGELOG
+=========
+
+2026-08-27 — State-of-play update
+• Permanent destination is now one PUBLIC “Salsa Social – Structured” master.
+• Added saved master playlist ID/link and in-place sync.
+• Added automatic pre-sync backup of live Position + Added At metadata.
+• Added Preview Sync and explicit SYNC confirmation.
+• Added surgical keep/remove/add/reorder strategy so retained tracks are not deliberately re-added.
+• Corrected Added At assumption after validating source data: historical salsa chronology is NOT recoverable from current Exportify/Chosic files because all rows share the same rebuild date/timestamp.
+• Normal Initial Build therefore preserves exact V2 Custom order without pretending to preserve lost chronology.
+• Added optional Chronology Build that refuses same-date data and works only with a genuinely varied historical export.
+• 1.05s remains the configurable default only for chronology-sensitive individual additions.
+• Included generic date-order clone side utility for other playlists.
+• Documented Incoming staging and current automation boundary.

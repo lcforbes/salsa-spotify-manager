@@ -1,0 +1,49 @@
+# Local Spotify configuration, credentials and OAuth artifacts
+spotify_client_id.txt
+salsa_master_config.json
+salsa_master_state_cache.json
+spotify_quota_status.json
+.env
+.env.*
+!.env.example
+*token*.json
+*credentials*.json
+.cache*
+
+# Live playlist data, exports, generated plans and checkpoints
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*cache*.json
+*state*.json
+*checkpoint*.json
+incoming_auto_plan_*
+incoming_review_*
+logs/
+backups/
+master_history/
+incoming_reviews/
+Incoming/
+incoming/
+Archive*/
+STATE OF PLAY*
+files.txt
+
+# Python and machine-specific files
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+*.log
+*.lnk
+*.zip
+*.bak
+*.tmp
+.idea/
+.vscode/
+Thumbs.db
+Desktop.ini
+.DS_Store
